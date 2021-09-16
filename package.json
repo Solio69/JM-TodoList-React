@@ -58,12 +58,15 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.4.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "npm run lint",
-      "git add",
-      "eslint --cache --fix",
-      "prettier --write"
+      "git add"
     ]
   }
 }
