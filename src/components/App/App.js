@@ -111,7 +111,9 @@ export default class App extends Component {
 
   render() {
 
-    
+    let a=1;
+    a=2;
+    console.log(a)
     // console.log(this.state.filter)
     // console.log(this.state.todoData)
     const { todoData, filter } = this.state;
