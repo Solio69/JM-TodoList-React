@@ -22,8 +22,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
+    "lint": "eslint ./src --color",
+    "lint:fix": "eslint ./src --fix --color",
     "format": "prettier --write src/**/*.js",
     "prepare": "husky install"
   },
@@ -65,8 +65,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint",
-      "git add"
+      "npm run lint"
     ]
   }
 }
