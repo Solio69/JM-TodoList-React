@@ -127,7 +127,6 @@ export default class App extends Component {
 
     return (
       <section className="todoapp">
-        <script type="text/babel" src="../src/index.js"/>
         <header className="header">
           <h1>todos</h1>
           <NewTaskForm onItemAdded={this.addItem} />
