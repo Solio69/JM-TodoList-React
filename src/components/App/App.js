@@ -16,6 +16,7 @@ export default class App extends Component {
   deleteItem = (id) => {
     this.setState(({ todoData }) => {
       const ind = todoData.findIndex((el) => el.id === id);
+      // eslint-disable-next-line id-length
       const newArr = todoData.filter((_, index) => index !== ind);
 
       return {
@@ -110,7 +111,6 @@ export default class App extends Component {
   }
 
   render() {
-
     // console.log(this.state.filter)
     // console.log(this.state.todoData)
     const { todoData, filter } = this.state;

@@ -19,20 +19,20 @@ export default class Task extends Component {
   };
 
   // обновляет label при потере фокуса с input
-  handleChange = (e) => {
+  handleChange = (event) => {
     const { item, addEditedItem } = this.props;
     const newItem = { ...item };
 
-    newItem.label = e.target.value;
+    newItem.label = event.target.value;
     newItem.editing = false;
 
     addEditedItem(item.id, newItem);
   };
 
   // обновляет label при нажатии Enter
-  handleChangeKey = (e) => {
-    if (e.key === 'Enter') {
-      this.handleChange(e);
+  handleChangeKey = (event) => {
+    if (event.key === 'Enter') {
+      this.handleChange(event);
     }
   };
 
