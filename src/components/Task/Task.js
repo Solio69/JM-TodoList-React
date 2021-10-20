@@ -2,6 +2,7 @@ import './Task.css';
 import React, { Component } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import PropTypes from 'prop-types';
+import Timer from '../Timer/Timer';
 
 export default class Task extends Component {
   static propTypes = {
@@ -64,11 +65,8 @@ export default class Task extends Component {
           <input className="toggle" type="checkbox" checked={!!completed} onChange={onToggleDone} />
           <label>
             <span className="title">{label}</span>
-            <span className="description">
-              <button className="icon icon-play" type="button" aria-label="icon-play"/>
-              <button className="icon icon-pause" type="button" aria-label="icon-pause"/>
-              01:12:25
-            </span>
+            <Timer />
+
             <span className="created">created {wasCreated} ago</span>
           </label>
           <button className="icon icon-edit" type="button" aria-label="Icon input edit" onClick={onToggleEdit} />
