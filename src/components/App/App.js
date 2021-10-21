@@ -97,6 +97,23 @@ export default class App extends Component {
     }
   };
 
+  // eslint-disable-next-line no-unused-vars
+  changeTimer = (id, updatTimerData) => {
+    this.setState(({ todoData }) => {
+      const newArr = [...todoData];
+
+      const ind = newArr.findIndex((el) => el.id === id);
+
+      newArr[ind].timerData = updatTimerData;
+      // console.log(newArr[ind].timerData)
+      return {
+        todoData: newArr,
+      };
+    });
+    // eslint-disable-next-line react/destructuring-assignment
+    // console.log(this.state.todoData)
+  };
+
   // создает новый элемент списка
   createTodoItem(label) {
     const str = String(new Date());
@@ -107,6 +124,12 @@ export default class App extends Component {
       editing: false,
       dateСreation: str,
       id: Math.floor(Math.random() * (1000 - 1) + 1),
+      timerData: {
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+        intervalId: 0,
+      },
     };
   }
 
@@ -138,6 +161,7 @@ export default class App extends Component {
             onToggleDone={this.onToggleDone}
             onToggleEdit={this.onToggleEdit}
             addEditedItem={this.addEditedItem}
+            changeTimer={this.changeTimer}
           />
           <Footer
             taskCount={tasksLeftCount}

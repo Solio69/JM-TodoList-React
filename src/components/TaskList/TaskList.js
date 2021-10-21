@@ -3,7 +3,7 @@ import './TaskList.css';
 import PropTypes from 'prop-types';
 import Task from '../Task/Task';
 
-const TaskList = ({ todos, onDeleted, onToggleDone, onToggleEdit, addEditedItem }) => {
+const TaskList = ({ todos, onDeleted, onToggleDone, onToggleEdit, addEditedItem, changeTimer }) => {
   // console.log(TaskList.defaultProps)
 
   const elements = todos.map((item, i) => {
@@ -22,6 +22,7 @@ const TaskList = ({ todos, onDeleted, onToggleDone, onToggleEdit, addEditedItem 
           onToggleEdit(id);
         }}
         addEditedItem={addEditedItem}
+        changeTimer={changeTimer}
       />
     );
   });
@@ -35,6 +36,7 @@ TaskList.propTypes = {
   onToggleDone: PropTypes.func.isRequired,
   onToggleEdit: PropTypes.func.isRequired,
   addEditedItem: PropTypes.func.isRequired,
+  changeTimer: PropTypes.func.isRequired,
 };
 
 export default TaskList;

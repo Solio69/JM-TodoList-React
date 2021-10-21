@@ -12,11 +12,18 @@ export default class Task extends Component {
       editing: PropTypes.bool,
       dateСreation: PropTypes.string,
       id: PropTypes.number,
+      timerData: PropTypes.shape({
+        hours: PropTypes.number,
+        minutes: PropTypes.number,
+        seconds: PropTypes.number,
+        intervalId: PropTypes.number,
+      }),
     }).isRequired,
     onDeleted: PropTypes.func.isRequired,
     onToggleEdit: PropTypes.func.isRequired,
     addEditedItem: PropTypes.func.isRequired,
     onToggleDone: PropTypes.func.isRequired,
+    changeTimer: PropTypes.func.isRequired,
   };
 
   // обновляет label при потере фокуса с input
@@ -41,8 +48,8 @@ export default class Task extends Component {
     // console.log(Task.defaultProps)
     // console.log(this.props)
 
-    const { onDeleted, onToggleEdit, onToggleDone, item } = this.props;
-    const { label, dateСreation, completed, editing } = item;
+    const { onDeleted, onToggleEdit, onToggleDone, item, changeTimer } = this.props;
+    const { label, dateСreation, completed, editing, timerData, id } = item;
 
     // превращем строку обатно в объект
     const dateObj = new Date(dateСreation);
@@ -65,8 +72,7 @@ export default class Task extends Component {
           <input className="toggle" type="checkbox" checked={!!completed} onChange={onToggleDone} />
           <label>
             <span className="title">{label}</span>
-            <Timer />
-
+            <Timer changeTimer={changeTimer} timerData={timerData} id={id} />
             <span className="created">created {wasCreated} ago</span>
           </label>
           <button className="icon icon-edit" type="button" aria-label="Icon input edit" onClick={onToggleEdit} />
